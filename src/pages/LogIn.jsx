@@ -25,7 +25,7 @@ const LogIn = () => {
             </h2>
             <span className="leading-[3rem] max-lg:absolute bottom-[1rem] left-[15rem] w-[max-content]">
               <Link
-                to="/Login"
+                to="/register"
                 className="border font-semibold transition-colors ease-in  duration-200 px-2 pb-1 w-full m-auto rounded hover:text-white
                  hover:bg-black-darkest hover:border-black-darkest"
               >
@@ -41,17 +41,17 @@ const LogIn = () => {
            text-black-darkest font-bold z-10 rounded-[50px] max-sm:rounded-none"
           >
             <div
-              className="flex justify-center flex-nowrap 2xl:mt-[5.5rem] mt-[1rem] mb-[.5rem]
+              className="flex justify-center  flex-nowrap 2xl:mt-[5.5rem] mt-[1rem] mb-[.5rem]
              items-center  "
             >
               <h3 className="text-[3.188rem]  font-bold font-roboto p-0 text-black-darkest">
                 AMP
               </h3>
-              {/* absolute  right-[10rem] bottom-[.6rem]   */}
-              <div className="">
+
+              <div className="ml-[0.666rem]">
                 <div
                   className="w-[3.215rem] h-[3.169rem] flex flex-wrap justify-center 
-              items-center relative text-2xl leading-[1.2em] font-normal bg-blue text-white"
+                  items-center relative text-2xl leading-[1.2em] font-normal bg-blue text-white"
                 >
                   <span className="absolute top-[0] tracking-widest">SP</span>
                   <span className="absolute bottom-0 tracking-widest">OT</span>
@@ -116,12 +116,16 @@ const LogIn = () => {
                       <Link to="#">Forget Password?</Link>
                     </div>
                   </div>
-                  <button className="w-full h-[3.125rem] rounded-3xl bg-blue text-center 2xl:mt-16 mt-4  mb-4 text-white">
+                  <button
+                    className="w-full h-[3.125rem]
+                    rounded-3xl bg-blue text-center 2xl:mt-16 mt-4  mb-4 text-white"
+                  >
                     Login
                   </button>
                   <button
-                    className="w-full h-[3.125rem] rounded-3xl font-bold space-x-1 text-normal flex justify-center 
-                  items-center py-1 px-4 bg-purple-dark text-center text-white"
+                    className="w-full h-[3.125rem] rounded-3xl 
+                    font-bold space-x-1 text-normal flex justify-center 
+                    items-center py-1 px-4 bg-purple-dark text-center text-white"
                   >
                     <img
                       className="w-[1rem]"
