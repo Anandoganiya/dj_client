@@ -1,9 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 const LogIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   useEffect(() => {
     document.title = "DJ-login";
   }, []);
+
+  const handleLoginForm = (e) => {
+    e.preventDefault();
+    if (email.length === 0 || password.length === 0) {
+      setError("This Email address/password is invalid");
+      return;
+    }
+    setError("");
+  };
 
   return (
     <main className="bg-background-register font-roboto  bg-cover bg-center bg-no-repeat h-screen w-full text-white">
@@ -69,30 +81,47 @@ const LogIn = () => {
                 </h2>
               </div>
               <div className=" 2xl:w-[360px] w-[95%]  mx-auto mt-[2.063rem] max-sm:mt-4">
-                <form className="w-full">
+                {error && (
+                  <div className="w-full font-normal text-red-light max-sm:text-sm text-center">
+                    {error}
+                  </div>
+                )}
+                <form
+                  className="w-full"
+                  onSubmit={handleLoginForm}
+                  method="POST"
+                >
                   <div className="w-full mb-4">
-                    <label htmlFor="email" className="text-black-dark">
+                    <label
+                      htmlFor="email"
+                      className="text-black-dark font-normal"
+                    >
                       Email <span className="text-red-light">*</span>
                     </label>
                     <input
-                      className=" border border-gray text-gray outline-none 
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="placeholder:font-normal border border-gray text-gray outline-none 
                       rounded-3xl h-[3.125rem] pl-[24px] py-[15px] text-[0.875rem] w-full"
                       type="email"
-                      placeholder="enter email"
+                      placeholder="email"
                       id="email"
                       name="email"
                       autoComplete="off"
                     />
                   </div>
                   <div>
-                    <label htmlFor="password" className="text-black-dark">
+                    <label
+                      htmlFor="password"
+                      className="text-black-dark font-normal"
+                    >
                       Password <span className="text-red-light">*</span>
                     </label>
                     <input
-                      className=" border border-gray text-gray outline-none 
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="placeholder:font-normal border border-gray text-gray outline-none 
                       rounded-3xl h-[3.125rem] pl-[1.5rem] py-[0.938rem] text-[0.875rem] w-full"
                       type="Password"
-                      placeholder="enter password"
+                      placeholder="password"
                       id="password"
                       name="password"
                     />
@@ -106,14 +135,14 @@ const LogIn = () => {
                         id="remember"
                       />
                       <label
-                        className="cursor-pointer text-[0.875rem]"
+                        className="cursor-pointer text-[0.875rem] font-normal"
                         htmlFor="remember"
                       >
                         Remember me
                       </label>
                     </div>
-                    <div className="text-blue text-[0.875rem] underline">
-                      <Link to="#">Forget Password?</Link>
+                    <div className="text-blue text-[0.875rem] underline font-bold">
+                      <Link to="#">Forgot Password?</Link>
                     </div>
                   </div>
                   <button
@@ -135,7 +164,7 @@ const LogIn = () => {
                     <span>Login with google</span>
                   </button>
                 </form>
-                <span className="text-center block max-sm:mt-1 mt-8 mb-[0.781rem] text-sm space-x-1">
+                <span className="text-center block mt-8 mb-[0.781rem] text-sm space-x-1">
                   <span className="text-black-dark ">New here?</span>
                   <span>
                     <Link to="/register" className="text-blue underline">

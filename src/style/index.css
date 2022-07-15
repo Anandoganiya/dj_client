@@ -1,10 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap&family=Puritan&display=swap");
 body {
   margin: 0;
-  font-family: "Roboto", "Open Sans", "sans-serif";
+  font-family: "Roboto", "Open Sans", "sans-serif", "Gill Sans";
   font-style: normal;
   font-size: 1rem;
 }

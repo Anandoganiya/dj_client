@@ -1,0 +1,131 @@
+import React from "react";
+
+const SocialLinkForm = ({ setIsShow }) => {
+  const handleRegisterForm = (e) => {
+    e.preventDefault();
+    console.log("form");
+  };
+  return (
+    <div
+      className="bg-white absolute 2xl:w-[33.438rem] w-[30rem] min-h-[38rem] max-lg:right-[0rem] 
+      max-lg:max-w-[100%] max-sm:w-[100%] max-sm:h-[70%] max-sm:top-[-11rem]
+      2xl:h-auto  overflow-auto 2xl:top-[-10.5rem] right-[2.313rem]  top-[-6rem] max-lg:top-[-5.5rem]
+      text-black-darkest font-bold z-10 rounded-[50px] max-sm:rounded-none
+      flex flex-col flex-nowrap justify-center"
+    >
+      <div
+        className=" h-[24px] w-[360px] 
+        max-sm:ml-4 flex items-end space-x-2
+        2xl:ml-[88px] ml-[55px]  mt-[49px] max-lg:mt-[2rem] "
+      >
+        <div className="w-[24px] h-[24px]">
+          <img
+            className="w-full"
+            src="/assets/icons/prev_arrow.png"
+            alt="prev arrow icon"
+          />
+        </div>
+        <span
+          onClick={() => setIsShow(0)}
+          className="text-sm text-blue underline font-normal cursor-pointer"
+        >
+          Back
+        </span>
+      </div>
+      <div
+        className="flex justify-center flex-nowrap 2xl:mt-[2.5rem] mt-[1rem] 2xl:mb-[2.2rem]
+       mb-[1rem] items-center"
+      >
+        <h3 className="text-[3.188rem] font-bold font-roboto p-0 text-black-darkest">
+          AMP
+        </h3>
+
+        <div className="ml-[0.666rem]">
+          <div
+            className="w-[3.215rem] h-[3.169rem] flex flex-wrap justify-center 
+           items-center relative text-2xl leading-[1.2em] font-normal bg-blue text-white"
+          >
+            <span className="absolute top-[0] tracking-widest">SP</span>
+            <span className="absolute bottom-0 tracking-widest">OT</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-[360px] mx-auto max-sm:w-[90%]">
+        <div>
+          <p className=" text-black-dark font-normal text-[1.25rem]">
+            Welcome DJ,
+          </p>
+          <h2 className="text-black-dark mt-4 2xl:text-[2.5rem] max-sm:text-[1.5rem] text-4xl ">
+            How About A Plug?
+          </h2>
+        </div>
+        <div className=" 2xl:w-full w-[95%] mt-[2.063rem] max-sm:mt-4">
+          <form className="w-full" onSubmit={handleRegisterForm}>
+            <div className="w-full mb-4">
+              <label htmlFor="spotify" className="text-black-dark font-normal">
+                Spotify link
+              </label>
+              <input
+                className="placeholder:font-normal border border-gray text-gray outline-none 
+                rounded-3xl h-[3.125rem] pl-[24px] py-[15px] text-[0.875rem] w-full"
+                type="text"
+                placeholder="spotify.com"
+                id="spotify"
+                name="spotify"
+                autoComplete="off"
+              />
+            </div>
+            <div className="w-full mb-4">
+              <label
+                htmlFor="soundcloud"
+                className="text-black-dark font-normal"
+              >
+                Soundcloud link
+              </label>
+              <input
+                className="placeholder:font-normal border border-gray text-gray outline-none 
+                 rounded-3xl h-[3.125rem] pl-[1.5rem] py-[0.938rem] text-[0.875rem] w-full"
+                type="text"
+                placeholder="soundcloud.com"
+                id="soundcloud"
+                name="soundcloud"
+              />
+            </div>
+
+            <div className="w-full">
+              <label htmlFor="youtube" className="text-black-dark font-normal">
+                YouTube link
+              </label>
+              <input
+                className="placeholder:font-normal border border-gray text-gray outline-none 
+                rounded-3xl h-[3.125rem] pl-[1.5rem] py-[0.938rem] text-[0.875rem] w-full"
+                type="text"
+                placeholder="YouTube.com"
+                id="youtube"
+                name="youtube"
+              />
+            </div>
+            <div className="w-full 2xl:mt-[2.063rem] mt-4  mb-4  2xl:mb-[4.563rem] max-sm:mb-0 flex justify-between">
+              <button
+                onClick={() => setIsShow(2)}
+                className="h-[3.125rem] w-full rounded-3xl text-center text-black "
+              >
+                Skip
+              </button>
+              <button
+                onClick={() => setIsShow(2)}
+                className="h-[3.125rem] font-bold rounded-3xl w-full bg-blue 
+                text-center  text-white"
+              >
+                Next
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SocialLinkForm;
