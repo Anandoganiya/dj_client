@@ -106,7 +106,7 @@ const SocialLinkForm = ({ setIsShow }) => {
                 name="youtube"
               />
             </div>
-            <div className="w-full 2xl:mt-[2.063rem] mt-4  mb-4  2xl:mb-[4.563rem] max-sm:mb-0 flex justify-between">
+            <div className="w-full 2xl:mt-[2.063rem] mt-4  mb-4 2xl:mb-[4.563rem]  flex justify-between">
               <button
                 onClick={() => setIsShow(2)}
                 className="h-[3.125rem] w-full rounded-3xl text-center text-black "

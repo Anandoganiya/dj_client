@@ -71,13 +71,10 @@ const SetUpProfile = ({ setIsShow }) => {
                 name="personalbio"
                 placeholder="John.snow@gmail.com"
                 id="personalbio"
-
-                // cols="30"
-                // rows="10"
               ></textarea>
             </div>
 
-            <div className="w-full mt-[2.063rem] mb-4  2xl:mb-[4.563rem] max-sm:mb-0 flex justify-between">
+            <div className="w-full mt-[2.063rem] mb-4 2xl:mb-[4.563rem] flex justify-between">
               <button
                 onClick={() => setIsShow(0)}
                 className="h-[3.125rem] w-full rounded-3xl text-center text-black "

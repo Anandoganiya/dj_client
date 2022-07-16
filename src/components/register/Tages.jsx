@@ -16,7 +16,7 @@ const Tages = ({ setIsShow }) => {
       <div
         className=" h-[24px] w-[360px] 
         max-sm:ml-4 flex items-end space-x-2
-        2xl:ml-[88px] ml-[55px]  mt-[49px] max-lg:mt-[2rem] cursor-pointer mb-[29px]"
+        2xl:ml-[88px] ml-[55px] mt-[49px] max-lg:mt-[2rem] cursor-pointer mb-[29px]"
       >
         <div className="w-[24px] h-[24px] ">
           <img
@@ -43,7 +43,7 @@ const Tages = ({ setIsShow }) => {
           <form className="w-full" onSubmit={handleRegisterForm}>
             <div
               className="w-full text-[12px] flex justify-between max-sm:justify-evenly
-           flex-wrap font-roboto font-normal gap-4  text-black-dark"
+           flex-wrap font-roboto font-normal gap-4 text-black-dark"
             >
               <div
                 className=" cursor-pointer hover:bg-blue hover:text-white 
@@ -215,7 +215,7 @@ const Tages = ({ setIsShow }) => {
               </div>
             </div>
 
-            <div className="w-full mt-[2.063rem]   mb-4  2xl:mb-[4.563rem] max-sm:mb-0 flex justify-between">
+            <div className="w-full mt-[2.063rem] mb-4 2xl:mb-[4.563rem] flex justify-between">
               <button
                 onClick={() => {
                   setIsShow(3);
