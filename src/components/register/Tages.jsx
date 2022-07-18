@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import allTags from "../../content/tages";
 const Tages = ({ setIsShow }) => {
-  const handleRegisterForm = (e) => {
+  const [selectTag, setSelectTag] = useState([]);
+
+  const handleTages = (e) => {
     e.preventDefault();
-    console.log("form");
+    console.log("make api call");
+    setIsShow(3);
+  };
+
+  // selecting the tags
+  const handleToggle = (selectedTagName) => {
+    const toggleTags = selectTag.includes(selectedTagName)
+      ? selectTag.filter((tag) => tag !== selectedTagName)
+      : [...selectTag, selectedTagName];
+    setSelectTag(toggleTags);
   };
 
   return (
@@ -40,179 +52,16 @@ const Tages = ({ setIsShow }) => {
           Welcome DJ,
         </p>
         <div className=" 2xl:w-full w-[95%] mt-[2.063rem] max-sm:mt-4">
-          <form className="w-full" onSubmit={handleRegisterForm}>
+          <form className="w-full" onSubmit={handleTages}>
             <div
               className="w-full text-[12px] flex justify-between max-sm:justify-evenly
-           flex-wrap font-roboto font-normal gap-4 text-black-dark"
+           flex-wrap font-roboto font-normal gap-1 text-black-dark"
             >
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Afrobeats
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Rock
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Electronic
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                HipHop
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Afrobeats
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Rock
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Electronic
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                HipHop
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Afrobeats
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Rock
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Electronic
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                HipHop
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Afrobeats
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Rock
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Electronic
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                HipHop
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Afrobeats
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Rock
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Electronic
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                HipHop
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Afrobeats
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Rock
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                Electronic
-              </div>
-              <div
-                className=" cursor-pointer hover:bg-blue hover:text-white 
-             border border-black-dark hover:border-blue rounded-3xl
-           w-[72px] h-[30px]  p-3 flex justify-center items-center"
-              >
-                HipHop
-              </div>
+              {allTags.map((tag) => {
+                return (
+                  <TagItem key={tag.id} tag={tag} handleToggle={handleToggle} />
+                );
+              })}
             </div>
 
             <div className="w-full mt-[2.063rem] mb-4 2xl:mb-[4.563rem] flex justify-between">
@@ -225,9 +74,6 @@ const Tages = ({ setIsShow }) => {
                 Skip
               </button>
               <button
-                onClick={() => {
-                  setIsShow(3);
-                }}
                 className="h-[3.125rem] font-bold rounded-3xl w-full bg-blue 
             text-center  text-white"
               >
@@ -237,6 +83,25 @@ const Tages = ({ setIsShow }) => {
           </form>
         </div>
       </div>
+    </div>
+  );
+};
+
+const TagItem = ({ tag, handleToggle }) => {
+  const [active, setActive] = useState(false);
+  return (
+    <div
+      onClick={() => {
+        handleToggle(tag.tagName);
+        setActive(!active);
+      }}
+      key={tag.id}
+      className={`cursor-pointer hover:bg-blue hover:text-white 
+      border border-black-dark hover:border-blue rounded-3xl select-none
+      min-w-[72px] h-[30px]  p-3 flex justify-evenly items-center 
+      ${active ? "bg-blue border-blue text-white" : "bg-white"} `}
+    >
+      {tag.tagName}
     </div>
   );
 };

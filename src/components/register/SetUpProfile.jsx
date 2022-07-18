@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserProfile } from "../../reducers/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const SetUpProfile = ({ setIsShow }) => {
-  const handleRegisterForm = (e) => {
+  const [djName, setDjName] = useState("");
+  const [djBio, setDjBio] = useState("");
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleProfileForm = (e) => {
     e.preventDefault();
-    console.log("form");
+    const profile = {
+      djName,
+      djBio,
+    };
+    dispatch(setUserProfile({ profile, accessToken: user.data.token }));
+    navigate("/");
   };
+
   return (
     <div
       className="bg-white absolute 2xl:w-[33.438rem] w-[30rem] min-h-[38rem] max-lg:right-[0rem] 
@@ -43,12 +58,15 @@ const SetUpProfile = ({ setIsShow }) => {
           </h2>
         </div>
         <div className=" 2xl:w-full w-[95%] mt-[2.063rem] max-sm:mt-4">
-          <form className="w-full" onSubmit={handleRegisterForm}>
+          <form className="w-full" method="POST" onSubmit={handleProfileForm}>
             <div className="w-full mb-4">
               <label htmlFor="djname" className="text-black-dark font-normal">
                 DJ name
               </label>
               <input
+                onChange={({ target }) => {
+                  setDjName(target.value);
+                }}
                 className="placeholder:font-normal border border-gray text-gray outline-none
                 rounded-3xl h-[3.125rem] pl-[24px] py-[15px] text-[0.875rem] w-full"
                 type="text"
@@ -66,6 +84,9 @@ const SetUpProfile = ({ setIsShow }) => {
                 Personal bio
               </label>
               <textarea
+                onChange={({ target }) => {
+                  setDjBio(target.value);
+                }}
                 className="placeholder:font-normal border border-gray text-gray outline-none
                rounded-lg h-[128px] px-[24px] py-[15px] text-[0.875rem] w-full"
                 name="personalbio"
@@ -82,7 +103,6 @@ const SetUpProfile = ({ setIsShow }) => {
                 Skip
               </button>
               <button
-                onClick={() => setIsShow(0)}
                 className="h-[3.125rem] font-bold rounded-3xl w-full bg-blue 
                 text-center  text-white"
               >

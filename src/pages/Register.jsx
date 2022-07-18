@@ -11,8 +11,9 @@ import {
 const Register = () => {
   const [isShow, setIsShow] = useState(0);
   const [emailForVerification, setEmailForVerification] = useState("");
+  const [showModal, setShowModal] = useState(true);
   useEffect(() => {
-    document.title = "DJ-login";
+    document.title = "DJ-register";
   }, []);
 
   return (
@@ -73,10 +74,69 @@ const Register = () => {
           {isShow === 1 && <SocialLinkForm setIsShow={setIsShow} />}
           {isShow === 2 && <Tages setIsShow={setIsShow} />}
           {isShow === 3 && <SetUpProfile setIsShow={setIsShow} />}
-          {/* <VerifyEmail emailForVerification={emailForVerification} /> */}
+          {isShow === 4 && (
+            <VerifyEmail emailForVerification={emailForVerification} />
+          )}
         </div>
       </div>
+      {isShow === 1 && showModal ? (
+        <Modal
+          emailForVerification={emailForVerification}
+          setIsShow={setIsShow}
+          setShowModal={setShowModal}
+        />
+      ) : null}
     </main>
+  );
+};
+
+const Modal = ({ emailForVerification, setIsShow, setShowModal }) => {
+  // const [showModal, setShowModal] = useState(true);
+
+  const handleModalForSkip = () => {
+    setShowModal(false);
+    // setFlag(false);
+  };
+  const handleModalForVerification = () => {
+    setIsShow(4);
+    setShowModal(false);
+    // setFlag(false);
+  };
+  return (
+    <>
+      {/* {showModal ? ( */}
+      <div className="absolute">
+        <div className="justify-center  items-center flex overflow-x-hidden overflow-y-auto fixed bg-trans-card inset-0 z-50 outline-none focus:outline-none">
+          <div className=" w-[20rem] max-sm:w-[95%]  my-6 mx-auto absolute top-0 max-w-3xl">
+            {/*content*/}
+            <div className="border-0 rounded-lg   shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="relative  flex-auto border-b-2 border-gray mb-4 ">
+                <p className="my-4  text-slate-500 text-center text-xl font-bold leading-relaxed text-black-darkest">
+                  verification link has been {emailForVerification}
+                </p>
+              </div>
+              <div className="w-full mb-4 flex px-1 justify-between">
+                <button
+                  onClick={() => handleModalForSkip()}
+                  className="h-[3.125rem] w-full bg-white text-black-darkest rounded-3xl text-center text-black "
+                >
+                  Skip
+                </button>
+                <button
+                  onClick={() => handleModalForVerification()}
+                  className="h-[3.125rem] font-bold rounded-3xl w-full bg-blue 
+                text-center  text-white"
+                >
+                  verify
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+      </div>
+      {/* ) : null} */}
+    </>
   );
 };
 

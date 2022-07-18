@@ -14,6 +14,7 @@ module.exports = {
       gray: "#737070",
       blue: "rgba(0, 133, 255, 1)",
       white: "rgb(255 255 255)",
+      green: "#70e000",
     },
     fontFamily: {
       roboto: ["Roboto", "Georgia", "ui-serif"],

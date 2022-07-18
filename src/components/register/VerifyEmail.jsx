@@ -1,10 +1,6 @@
 import React from "react";
 
-const VerifyEmail = ({ setIsShow, emailForVerification }) => {
-  const handleRegisterForm = (e) => {
-    e.preventDefault();
-    console.log("form");
-  };
+const VerifyEmail = ({ emailForVerification }) => {
   return (
     <div
       className="bg-white absolute 2xl:w-[33.438rem] w-[30rem] min-h-[36.188rem] max-sm:min-h-[37.188rem]  max-lg:right-[0rem] 

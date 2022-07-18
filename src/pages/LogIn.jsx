@@ -14,7 +14,7 @@ const LogIn = () => {
       <div className=" flex justify-center  flex-col items-center relative h-full">
         {/* Transparent card */}
         <div
-          className="w-[57.688rem] h-[27.625rem] max-lg:w-[30rem] max-lg:h-[40rem] max-sm:w-[100%] max-sm:h-[40%]
+          className="w-[57.688rem] h-[27.625rem] max-lg:w-[30rem] max-lg:h-[41rem] max-sm:w-[100%] max-sm:h-[40%]
            border border-[#FFFFFF] rounded-[76px] relative bg-trans-card"
         >
           {isShow === 0 ? (
