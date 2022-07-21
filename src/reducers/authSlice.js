@@ -6,6 +6,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: user ? user : null,
+  currentUser: null,
   isLoading: false,
   isSuccess: false,
   isError: false,
@@ -79,7 +80,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = action.payload;
-        console.log("fullfilled", action.payload);
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isError = true;

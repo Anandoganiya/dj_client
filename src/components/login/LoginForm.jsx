@@ -4,9 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { loginUser, reset } from "../../reducers/authSlice";
 
 const LoginForm = ({ setIsShow, setEamilResetPass }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const getEmail = localStorage.getItem("email");
+  const getPass = localStorage.getItem("pass");
+  const getCheck = localStorage.getItem("check");
+
+  const [email, setEmail] = useState(getEmail ? getEmail : "");
+  const [password, setPassword] = useState(getPass ? getPass : "");
   const [error, setError] = useState("");
+  const [isChecked, setIsChecked] = useState(getCheck ? getCheck : false);
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
@@ -21,7 +26,7 @@ const LoginForm = ({ setIsShow, setEamilResetPass }) => {
       navigate("/");
     }
     dispatch(reset());
-  }, [user, isLoading, isError, isSuccess, message]);
+  }, [user, isLoading, isError, isSuccess, message, dispatch, navigate]);
 
   const handleLoginForm = (e) => {
     e.preventDefault();
@@ -70,6 +75,18 @@ const LoginForm = ({ setIsShow, setEamilResetPass }) => {
     const updatedEmail = newStr + "@" + a[1];
     setEamilResetPass(updatedEmail);
   };
+
+  //handling remember me
+  if (isChecked) {
+    localStorage.setItem("check", isChecked);
+    localStorage.setItem("email", email);
+    localStorage.setItem("pass", password);
+  } else if (!isChecked) {
+    localStorage.removeItem("check");
+    localStorage.removeItem("email");
+    localStorage.removeItem("pass");
+  }
+
   return (
     <div
       className="bg-white absolute 2xl:w-[33.438rem] w-[30rem] min-h-[38rem] max-lg:right-[0rem] 
@@ -118,6 +135,7 @@ const LoginForm = ({ setIsShow, setEamilResetPass }) => {
               </label>
               <input
                 onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 className="placeholder:font-normal border border-gray text-gray outline-none 
                 rounded-3xl h-[3.125rem] pl-[24px] py-[15px] text-[0.875rem] w-full"
                 type="text"
@@ -133,6 +151,7 @@ const LoginForm = ({ setIsShow, setEamilResetPass }) => {
               </label>
               <input
                 onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 className="placeholder:font-normal border border-gray text-gray outline-none 
                 rounded-3xl h-[3.125rem] pl-[1.5rem] py-[0.938rem] text-[0.875rem] w-full"
                 type="Password"
@@ -144,6 +163,8 @@ const LoginForm = ({ setIsShow, setEamilResetPass }) => {
             <div className="flex flex-nowrap text-sm justify-between mt-4">
               <div className="space-x-1 flex flex-nowrap justify-between items-center">
                 <input
+                  onChange={() => setIsChecked(!isChecked)}
+                  checked={isChecked}
                   className="checked:border-blue"
                   type="checkbox"
                   name="remember"
@@ -206,7 +227,7 @@ const LoginForm = ({ setIsShow, setEamilResetPass }) => {
               <span>Login with google</span>
             </button>
           </form>
-          <span className="text-center block font-normal mt-8 mb-[0.781rem] text-sm space-x-1">
+          <span className="text-center block font-normal mt-8 mb-[0.781rem] 2xl:mb-[4.031rem] text-sm space-x-1">
             <span className="text-black-dark">New here?</span>
             <span>
               <Link to="/register" className="text-blue underline ">

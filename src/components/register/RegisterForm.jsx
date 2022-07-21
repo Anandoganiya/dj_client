@@ -4,9 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUser, reset } from "../../reducers/authSlice";
 
 const RegisterForm = ({ setIsShow, setEmailForVerification }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const getEmail = localStorage.getItem("email");
+  const getPass = localStorage.getItem("pass");
+  const getCheck = localStorage.getItem("check");
+
+  const [email, setEmail] = useState(getEmail ? getEmail : "");
+  const [password, setPassword] = useState(getPass ? getPass : "");
   const [error, setError] = useState("");
+  const [isChecked, setIsChecked] = useState(getCheck ? getCheck : false);
+
   const { user, isError, isLoading, isSuccess, message } = useSelector(
     (state) => state.auth
   );
@@ -20,7 +26,7 @@ const RegisterForm = ({ setIsShow, setEmailForVerification }) => {
       setIsShow(1);
     }
     dispatch(reset());
-  }, [user, isError, isLoading, isSuccess, message, dispatch]);
+  }, [user, isError, isLoading, isSuccess, message, dispatch, setIsShow]);
 
   const handleRegisterForm = (e) => {
     e.preventDefault();
@@ -56,6 +62,17 @@ const RegisterForm = ({ setIsShow, setEmailForVerification }) => {
     setEmailForVerification(updatedEmail);
     setError("");
   };
+
+  //handling remember me
+  if (isChecked) {
+    localStorage.setItem("check", isChecked);
+    localStorage.setItem("email", email);
+    localStorage.setItem("pass", password);
+  } else if (!isChecked) {
+    localStorage.removeItem("check");
+    localStorage.removeItem("email");
+    localStorage.removeItem("pass");
+  }
 
   return (
     <div
@@ -106,6 +123,7 @@ const RegisterForm = ({ setIsShow, setEmailForVerification }) => {
               </label>
               <input
                 onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 className="placeholder:font-normal border border-gray text-gray outline-none
                 rounded-3xl h-[3.125rem] pl-[24px] py-[15px] text-[0.875rem] w-full"
                 type="text"
@@ -121,6 +139,7 @@ const RegisterForm = ({ setIsShow, setEmailForVerification }) => {
               </label>
               <input
                 onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 className="placeholder:font-normal border border-gray text-gray outline-none
                    rounded-3xl h-[3.125rem] pl-[1.5rem] py-[0.938rem] text-[0.875rem] w-full"
                 type="Password"
@@ -132,6 +151,8 @@ const RegisterForm = ({ setIsShow, setEmailForVerification }) => {
             <div className="text-sm  mt-4 ">
               <div className="space-x-1 flex flex-nowrap">
                 <input
+                  onChange={() => setIsChecked(!isChecked)}
+                  checked={isChecked}
                   className="checked:border-blue"
                   type="checkbox"
                   name="remember"
@@ -193,7 +214,7 @@ const RegisterForm = ({ setIsShow, setEmailForVerification }) => {
             <span className="text-black-dark">New here?</span>
             <span>
               <Link to="/login" className="text-blue underline">
-                sign Up
+                Sign Up
               </Link>
             </span>
           </span>

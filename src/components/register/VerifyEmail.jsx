@@ -55,22 +55,22 @@ const VerifyingEmail = ({ emailForVerification }) => {
   );
 };
 
-const VerifiedEmail = () => {
-  return (
-    <div className="w-[360px] mx-auto max-sm:w-[90%] mb-[115px] mt-[90px]">
-      <div className=" flex justify-center">
-        <img
-          className="w-[80px] h-[80px]"
-          src="/assets/icons/right.png"
-          alt="message icon"
-        />
-      </div>
-      <h4 className="mb-8 text-[1rem] mt-[48px] text-center">
-        You've been verified!
-      </h4>
-      <p className="text-blue underline cursor-pointer font-normal text-center">
-        Continue
-      </p>
-    </div>
-  );
-};
+// const VerifiedEmail = () => {
+//   return (
+//     <div className="w-[360px] mx-auto max-sm:w-[90%] mb-[115px] mt-[90px]">
+//       <div className=" flex justify-center">
+//         <img
+//           className="w-[80px] h-[80px]"
+//           src="/assets/icons/right.png"
+//           alt="message icon"
+//         />
+//       </div>
+//       <h4 className="mb-8 text-[1rem] mt-[48px] text-center">
+//         You've been verified!
+//       </h4>
+//       <p className="text-blue underline cursor-pointer font-normal text-center">
+//         Continue
+//       </p>
+//     </div>
+//   );
+// };

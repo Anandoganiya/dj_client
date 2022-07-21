@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserPlug } from "../../reducers/authSlice";
 const SocialLinkForm = ({ setIsShow }) => {
   const [soundCloud, setSoundCloud] = useState("");
   const [spotify, setSpotify] = useState("");
   const [youtube, setYoutube] = useState("");
-  const { user, isError, isLoading, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
+  const { user, isSuccess } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  // localStorage.setItem("showNumber", 2);
   const handlePlugForm = (e) => {
     e.preventDefault();
     const plugs = {

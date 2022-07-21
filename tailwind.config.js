@@ -7,6 +7,7 @@ module.exports = {
       "black-darkest": "rgb(0 0 0)",
       "black-dark": "rgba(35, 34, 50, 1)",
       "black-gray": "rgba(255, 255, 255, 1)",
+      "gray-light": "rgba(154, 152, 152, 1)",
       "purple-dark": "rgba(14, 0, 83, 1)",
       "red-light": "rgba(255, 61, 20, 0.7)",
       "blue-darkest": "rgba(14, 0, 83, 1)",
@@ -18,12 +19,23 @@ module.exports = {
     },
     fontFamily: {
       roboto: ["Roboto", "Georgia", "ui-serif"],
+      //"Puritan" font similar to "Gill Sans"
+      gill: ["Puritan", "sans-serif"],
+      inter: ["Inter", "sans-serif"],
     },
     extend: {
       backgroundImage: {
         //login and register background image
         "background-register": "url('/public/assets/images/background.jpg')",
       },
+    },
+    gridTemplateColumns: {
+      desk: "320px auto",
+      mobile: "1fr",
+    },
+    boxShadow: {
+      "menu_item-shadow": "0px 4px 12px 3px rgba(0, 122, 255, 0.42)",
+      "item-shadow": " 0px 4px 16px 3px rgba(0, 0, 0, 0.25)",
     },
     screens: {
       // min width media query
@@ -37,6 +49,9 @@ module.exports = {
       "max-lg": { max: "1023px" },
       "max-sm": { max: "540px" },
       "max-xs": { max: "440px" },
+      //breakpoints for dashboard
+      "max-2md": { max: "800px" },
+      "max-2xl": { max: "1350px" },
     },
   },
   plugins: [],
