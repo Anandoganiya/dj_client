@@ -15,7 +15,7 @@ const djMenuLink = [
     iconImage: "profile.png",
   },
   {
-    slug: "/be-the-dj",
+    slug: "/dj-week",
     linkName: "Be the Dj of the Week",
     iconImage: "crown.png",
   },

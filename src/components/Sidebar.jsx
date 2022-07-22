@@ -2,14 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import djMenuLink from "../content/djMenuLink";
 import { HiMenuAlt2 } from "react-icons/hi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
 const Sidebar = ({ showMenu, setShowMenu }) => {
+  library.add(faArrowRightFromBracket);
   return (
     <aside
       className={`bg-blue-darkest sticky top-0 h-screen text-white max-2md:fixed 
     transition-all duration-300 delay-100 ease-linear ${
       showMenu ? "left-0" : "left-[-100%]"
     }
-     w-[320px] z-10`}
+     w-[320px] z-50`}
     >
       {/* logo */}
       <div className="pl-[42px] pt-[29px] select-none flex justify-between items-center">
@@ -60,7 +64,6 @@ const Sidebar = ({ showMenu, setShowMenu }) => {
         <div className="absolute bottom-[1rem]">
           <div className="mb-[7px]">
             <Link to="/">
-              {/* pl-[46px] */}
               <div
                 className="flex items-center min-w-[218px] max-w-[max-content] h-[40px] pl-[1rem]  py-[10px] 
             hover:bg-blue-light rounded-r-3xl hover:shadow-menu_item-shadow
@@ -79,15 +82,13 @@ const Sidebar = ({ showMenu, setShowMenu }) => {
           </div>
           <div className="mb-[7px]">
             <Link to="/">
-              {/* pl-[46px] */}
               <div
                 className="flex items-center min-w-[218px] max-w-[max-content] h-[40px] pl-[1rem]  py-[10px] 
            hover:bg-blue-light rounded-r-3xl hover:shadow-menu_item-shadow
            transition-all delay-75 duration-75 ease-linear"
               >
-                <img
-                  src={`/assets/icons/logout.png`}
-                  alt="message icon"
+                <FontAwesomeIcon
+                  icon={faArrowRightFromBracket}
                   className="w-[1rem] h-[1rem] mr-[23px]"
                 />
                 <div className="text-[20px] w-full align-center font-gill">
