@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Sidebar } from "../components";
-import allTags from "../content/tages";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { getCurrentUser, updateUserProfile } from "../reducers/userSlice";
-import { HiMenuAlt2 } from "react-icons/hi";
+import { createDjWeek } from "../reducers/userSlice";
 const UserProfile = () => {
-  const [showMenu, setShowMenu] = useState(false);
-  const [selectTag, setSelectTag] = useState([]);
+  // const [selectTag, setSelectTag] = useState([]);
   const { user } = useSelector((state) => state.auth);
-  const { currentUser } = useSelector((state) => state.currentUser);
+  // const { currentUser } = useSelector((state) => state.currentUser);
   const dispatch = useDispatch();
-  const [djName, setDjName] = useState("");
-  const [djBio, setDjBio] = useState();
+  const [addDuration, setAddDuration] = useState("");
+  const [cost, setCost] = useState();
+  const [location, setLocation] = useState("");
+  const [review, setReview] = useState();
   const [uploadImage, setUploadImage] = useState("");
-  useEffect(() => {
-    // dispatch(getCurrentUser(user));
-  }, [dispatch, user]);
 
   const handleUploadImage = (e) => {
     setUploadImage(URL.createObjectURL(e.target.files[0]));
@@ -23,45 +18,24 @@ const UserProfile = () => {
 
   const handleProfileForm = (e) => {
     e.preventDefault();
-    const profile = {
-      djName,
-      djBio,
+    const djProfile = {
+      addDuration,
+      cost,
+      location,
+      review,
     };
-    // dispatch(updateUserProfile({ profile, accessToken: user.data.token }));
+    dispatch(createDjWeek({ djProfile, accessToken: user.data.token }));
   };
 
   // selecting the tags
-  const handleToggle = (selectedTagName) => {
-    const toggleTags = selectTag.includes(selectedTagName)
-      ? selectTag.filter((tag) => tag !== selectedTagName)
-      : [...selectTag, selectedTagName];
-    setSelectTag(toggleTags);
-  };
+  // const handleToggle = (selectedTagName) => {
+  //   const toggleTags = selectTag.includes(selectedTagName)
+  //     ? selectTag.filter((tag) => tag !== selectedTagName)
+  //     : [...selectTag, selectedTagName];
+  //   setSelectTag(toggleTags);
+  // };
 
   return (
-    // <div className=" grid grid-cols-desk max-2md:grid-cols-mobile w-full">
-    //   <Sidebar showMenu={showMenu} setShowMenu={setShowMenu} />
-
-    //   {/* home container */}
-    //   <main className="max-w-[150rem] ">
-    //     <div
-    //       className="mt-[2.313rem] mr-[2.313rem] flex justify-between items-center z-10
-    //       max-2md:fixed w-full bg-white max-2md:m-0 p-1"
-    //     >
-    //       <div
-    //         onClick={() => setShowMenu(true)}
-    //         className={`ml-4 max-2md:visible invisible text-3xl cursor-pointer`}
-    //       >
-    //         <HiMenuAlt2 />
-    //       </div>
-    //       <div className="w-[3.5rem]">
-    //         <img
-    //           className="w-full  rounded-full"
-    //           src="./assets/profile/profile.png"
-    //           alt="profile"
-    //         />
-    //       </div>
-    //     </div>
     <div className="mx-[41px] max-sm:mx-4 max-2md:mt-[5rem]">
       <h2 className="text-[30px] font-semibold font-inter uppercase mb-[61px]">
         Dj of the Week
@@ -104,6 +78,7 @@ const UserProfile = () => {
                 <div className=" flex justify-between max-sm:flex-col ">
                   <div className="flex flex-col w-[45%] max-sm:w-full">
                     <input
+                      onChange={({ target }) => setAddDuration(target.value)}
                       type="text"
                       className="outline-none border-none bg-gray-lighter mb-[13px] rounded-xl placeholder-black-darkest
                           text-[19px] py-[15px] pl-[25px]"
@@ -117,6 +92,7 @@ const UserProfile = () => {
                   </div>
                   <div className="flex flex-col w-[45%] max-sm:w-full max-sm:mt-[20px]">
                     <input
+                      onChange={({ target }) => setCost(target.value)}
                       type="text"
                       className="outline-none border-none bg-gray-lighter mb-[13px] rounded-xl placeholder-black-darkest
                           text-[19px] py-[15px] pl-[25px]"
@@ -132,6 +108,7 @@ const UserProfile = () => {
                 <div className=" flex justify-between max-sm:flex-col mt-[20px]">
                   <div className="flex flex-col w-[45%] max-sm:w-full">
                     <input
+                      onChange={({ target }) => setLocation(target.value)}
                       type="text"
                       className="outline-none border-none bg-gray-lighter mb-[13px] rounded-xl placeholder-black-darkest
                            text-[19px] py-[15px] pl-[25px]"
@@ -145,6 +122,7 @@ const UserProfile = () => {
                   </div>
                   <div className="flex flex-col w-[45%] max-sm:w-full max-sm:mt-[20px]">
                     <input
+                      onChange={({ target }) => setReview(target.value)}
                       type="text"
                       className="outline-none border-none bg-gray-lighter mb-[13px] rounded-xl placeholder-black-darkest
                           text-[19px] py-[15px] pl-[25px]"
@@ -193,8 +171,6 @@ const UserProfile = () => {
         </div>
       </div>
     </div>
-    //   </main>
-    // </div>
   );
 };
 

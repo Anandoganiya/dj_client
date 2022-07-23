@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import djMenuLink from "../content/djMenuLink";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { useNavigate } from "react-router-dom";
 const Sidebar = ({ showMenu, setShowMenu }) => {
+  const selectedOption = localStorage.getItem("selectedOption") || 0;
+  const [isActive, setIsActive] = useState(Number(selectedOption));
+  const navigate = useNavigate();
+  const selectedMenuItem = (menuId) => {
+    localStorage.setItem("selectedOption", menuId);
+    setIsActive(menuId);
+  };
+
+  const logOut = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   library.add(faArrowRightFromBracket);
   return (
     <aside
@@ -13,7 +27,7 @@ const Sidebar = ({ showMenu, setShowMenu }) => {
     transition-all duration-300 delay-100 ease-linear ${
       showMenu ? "left-0" : "left-[-100%]"
     }
-     w-[320px] z-50`}
+     w-[320px] z-30`}
     >
       {/* logo */}
       <div className="pl-[42px] pt-[29px] select-none flex justify-between items-center">
@@ -39,14 +53,16 @@ const Sidebar = ({ showMenu, setShowMenu }) => {
       </div>
       {/* menu */}
       <div className="mt-[82px] relative h-[70%]">
-        {djMenuLink.map((link) => (
+        {djMenuLink.map((link, index) => (
           <div className="mb-[7px]" key={link.linkName}>
             <Link to={link.slug}>
-              {/* pl-[46px] */}
               <div
-                className="flex items-center min-w-[218px] max-w-[max-content] h-[40px] pl-[1rem]  py-[10px] 
-           hover:bg-blue-light rounded-r-3xl hover:shadow-menu_item-shadow
-           transition-all delay-75 duration-75 ease-linear"
+                onClick={() => selectedMenuItem(index)}
+                className={`flex items-center min-w-[218px] max-w-[max-content] h-[40px] pl-[1rem]  py-[10px] 
+              hover:bg-blue-light rounded-r-3xl hover:shadow-menu_item-shadow
+              transition-all delay-75 duration-75 ease-linear ${
+                isActive === index ? "bg-blue-light" : ""
+              }`}
               >
                 <img
                   src={`/assets/icons/${link.iconImage}`}
@@ -63,11 +79,14 @@ const Sidebar = ({ showMenu, setShowMenu }) => {
 
         <div className="absolute bottom-[1rem]">
           <div className="mb-[7px]">
-            <Link to="/">
+            <Link to="/messages">
               <div
-                className="flex items-center min-w-[218px] max-w-[max-content] h-[40px] pl-[1rem]  py-[10px] 
-            hover:bg-blue-light rounded-r-3xl hover:shadow-menu_item-shadow
-              transition-all delay-75 duration-75 ease-linear"
+                onClick={() => selectedMenuItem(5)}
+                className={`flex items-center min-w-[218px] max-w-[max-content] h-[40px] pl-[1rem]  py-[10px] 
+               hover:bg-blue-light rounded-r-3xl hover:shadow-menu_item-shadow
+                transition-all delay-75 duration-75 ease-linear ${
+                  isActive === 5 ? "bg-blue-light" : ""
+                }`}
               >
                 <img
                   src={`/assets/icons/message.png`}
@@ -81,21 +100,22 @@ const Sidebar = ({ showMenu, setShowMenu }) => {
             </Link>
           </div>
           <div className="mb-[7px]">
-            <Link to="/">
-              <div
-                className="flex items-center min-w-[218px] max-w-[max-content] h-[40px] pl-[1rem]  py-[10px] 
-           hover:bg-blue-light rounded-r-3xl hover:shadow-menu_item-shadow
-           transition-all delay-75 duration-75 ease-linear"
-              >
-                <FontAwesomeIcon
-                  icon={faArrowRightFromBracket}
-                  className="w-[1rem] h-[1rem] mr-[23px]"
-                />
-                <div className="text-[20px] w-full align-center font-gill">
-                  Log Out
-                </div>
+            {/* <Link to="/"> */}
+            <div
+              onClick={() => logOut()}
+              className="flex items-center min-w-[218px] max-w-[max-content] h-[40px] pl-[1rem]  py-[10px] 
+               hover:bg-blue-light rounded-r-3xl hover:shadow-menu_item-shadow
+                transition-all delay-75 duration-75 ease-linear cursor-pointer"
+            >
+              <FontAwesomeIcon
+                icon={faArrowRightFromBracket}
+                className="w-[1rem] h-[1rem] mr-[23px]"
+              />
+              <div className="text-[20px] w-full align-center font-gill">
+                Log Out
               </div>
-            </Link>
+            </div>
+            {/* </Link> */}
           </div>
         </div>
       </div>
