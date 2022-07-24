@@ -1,10 +1,6 @@
-import React, { useState } from "react";
-import { Sidebar } from "../components";
-import { Link } from "react-router-dom";
-import { HiMenuAlt2 } from "react-icons/hi";
+import React from "react";
 
 const Dashboard = () => {
-  const [showMenu, setShowMenu] = useState(false);
   return (
     <div className=" w-auto mx-[41px] max-2md:mt-[5rem]  mt-[1.125rem] mb-[46px]">
       <div className="w-full">

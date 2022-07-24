@@ -12,7 +12,7 @@ const Layout = () => {
         <Sidebar showMenu={showMenu} setShowMenu={setShowMenu} />
 
         {/* home container */}
-        <main className="max-w-[150rem] ">
+        <main className="max-w-[150rem] relative">
           <div
             className="mt-[2.313rem] mr-[2.313rem] flex justify-between items-center z-10
           max-2md:fixed w-full bg-white max-2md:m-0 p-1"
@@ -23,7 +23,7 @@ const Layout = () => {
             >
               <HiMenuAlt2 />
             </div>
-            <div className="w-[3.5rem]">
+            <div className="w-[3.5rem] z-10">
               <Link to="/user-profile">
                 <img
                   className="w-full rounded-full cursor-pointer"

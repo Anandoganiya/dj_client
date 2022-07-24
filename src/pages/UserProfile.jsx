@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Sidebar } from "../components";
 import allTags from "../content/tages";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { getCurrentUser, updateUserProfile } from "../reducers/userSlice";
-import { HiMenuAlt2 } from "react-icons/hi";
 const UserProfile = () => {
-  const [showMenu, setShowMenu] = useState(false);
   const [selectTag, setSelectTag] = useState([]);
   const { user } = useSelector((state) => state.auth);
   const { currentUser } = useSelector((state) => state.currentUser);

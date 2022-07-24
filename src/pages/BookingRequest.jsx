@@ -13,6 +13,7 @@ import {
   getAcceptedBookingRequest,
 } from "../reducers/userSlice";
 import Skeleton from "react-loading-skeleton";
+
 const BookingRequest = () => {
   const [requestBtnStatus, setRequestBtnStatus] = useState(false);
   const { user } = useSelector((state) => state.auth);
@@ -66,7 +67,7 @@ const BookingRequest = () => {
               >
                 <div className="flex max-md:flex-col">
                   <div className="shadow-item-shadow rounded-2xl">
-                    <figure className="">
+                    <figure>
                       <img
                         className="w-[157px] max-md:w-full max-md:h-[20rem] rounded-t-2xl h-[127px] object-cover"
                         src="./assets/images/mount.jpg"
@@ -79,7 +80,7 @@ const BookingRequest = () => {
                   </div>
                   <div className="mt-[28px] ml-[29px] font-normal text-[20px] tracking-widest">
                     <div className="flex items-center">
-                      <span className="">
+                      <span>
                         <FontAwesomeIcon icon={faLocationDot} />
                       </span>
                       <div className="ml-[13px]">
@@ -95,38 +96,49 @@ const BookingRequest = () => {
                     </div>
                   </div>
                 </div>
-                <div className="borde flex flex-col items-center bg-gray-lighter max-md:mt-4">
-                  <figure className="mt-[40px] mb-[15px]  ">
-                    {booking.status === "Pending" ? (
-                      <div className="p-1 border-red-light border">
-                        {" "}
-                        <img
-                          src="./assets/icons/pending.png"
-                          alt="pending state"
+                <div className="flex max-md:flex-col">
+                  {booking.paymentStatus ? (
+                    <div className=" flex justify-center items-center mr-4 max-md:m-0">
+                      <button
+                        className="bg-blue text-white 
+                         rounded-lg py-[12px] px-[21px] font-inter text-[15px]"
+                      >
+                        Pay Now
+                      </button>
+                    </div>
+                  ) : null}
+                  <div className=" relative flex flex-col items-center bg-gray-lighter max-md:mt-4">
+                    <figure className="mt-[40px] mb-[15px]">
+                      {booking.status === "Pending" ? (
+                        <div className="p-1 border-red-light border">
+                          <img
+                            src="./assets/icons/pending.png"
+                            alt="pending state"
+                          />
+                        </div>
+                      ) : booking.status === "Decline" ? (
+                        <FontAwesomeIcon
+                          icon={faXmarkCircle}
+                          className="h-[70px] w-[70px] text-red-light"
                         />
-                      </div>
-                    ) : booking.status === "Decline" ? (
-                      <FontAwesomeIcon
-                        icon={faXmarkCircle}
-                        className="h-[70px] w-[70px] text-red-light"
-                      />
-                    ) : (
-                      <FontAwesomeIcon
-                        icon={faCircleCheck}
-                        className="h-[70px] w-[70px] text-green"
-                      />
-                    )}
-                  </figure>
-                  <span
-                    className={`pl-[12px] text-[30px] mb-[12px] 
+                      ) : (
+                        <FontAwesomeIcon
+                          icon={faCircleCheck}
+                          className="h-[70px] w-[70px] text-green"
+                        />
+                      )}
+                    </figure>
+                    <span
+                      className={`pl-[12px] text-[30px] mb-[12px] 
                  ${
                    booking.status === "Accepted"
                      ? "text-green font-normal"
                      : "text-red-light font-bold"
                  } pr-[5px] font-roboto`}
-                  >
-                    {booking.status}
-                  </span>
+                    >
+                      {booking.status}
+                    </span>
+                  </div>
                 </div>
               </div>
             );

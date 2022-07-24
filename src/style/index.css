@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap&family=Puritan&display=swap&family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap&family=Puritan&display=swap&family=Inter&display=swap?family=IBM+Plex+Sans&display=swap");
 
 body {
   margin: 0;

@@ -5,3 +5,4 @@ export { default as UserProfile } from "./UserProfile";
 export { default as DjProfile } from "./DjProfile";
 export { default as BookingRequest } from "./BookingRequest";
 export { default as Messages } from "./Messages";
+export { default as ReviewsRatings } from "./ReviewsRatings";
