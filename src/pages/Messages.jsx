@@ -7,13 +7,15 @@ const Messages = () => {
   library.add(faArrowLeft, faArrowRight);
   return (
     <>
-      {/* ml-[35px] */}
-      <div className=" absolute max-2md:static top-[2.313rem] max-2md:mt-[4rem] font-rubik">
-        <div className="flex w-full">
+      <div
+        className="top-[2.313rem] absolute max-2md:static 
+       h-[90%] 2xl:h-[95%] m-auto w-full max-2md:mt-[4rem] font-rubik"
+      >
+        <div className="flex w-full h-full">
           {/* users */}
           <div
             className={`bg-white  z-20 max-2md:fixed max-2md:h-screen top-[4rem] 
-              border-r border-gray-light max-2md:rounded-r-2xl max-2md:w-[20rem] 
+              border-r border-gray-light  max-2md:rounded-r-2xl max-2md:w-[20rem] 
             transition-all duration-300 delay-100 ease-linear ${
               isOpen ? "left-0" : "left-[-100%]"
             }`}
@@ -142,7 +144,7 @@ const Messages = () => {
             </div>
           </div>
           {/* message layout */}
-          <div className="pl-[31px] max-2md:p-0  max-2md:w-[95%] w-full mx-auto">
+          <div className="pl-[31px] max-2md:p-0  max-2md:w-[95%] w-full mx-auto h-full">
             <div className="flex">
               <figure className="mr-[15px]">
                 <FontAwesomeIcon
@@ -166,8 +168,8 @@ const Messages = () => {
               </div>
             </div>
             {/* messages */}
-            <div className="w-full mt-[40px]  text-[18px] font-normal ">
-              <div className="h-[26rem] overflow-auto">
+            <div className="w-full mt-[40px] h-[85%] flex flex-col justify-between  text-[18px] font-normal ">
+              <div className="h-[100%] overflow-auto">
                 <div className="max-w-[50%] min-w-[15rem] bg-gray-mid text-black-darkest rounded-full px-4 py-4">
                   Hey I'm interested in you DJing my bar
                 </div>

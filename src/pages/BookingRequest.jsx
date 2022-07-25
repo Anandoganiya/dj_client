@@ -58,7 +58,7 @@ const BookingRequest = () => {
         {/*  block */}
         {isLoading ? (
           <Skeleton count={3} height={168} className="mb-16 rounded-3xl" />
-        ) : (
+        ) : bookingRquest?.data?.booking.length !== 0 && !isLoading ? (
           bookingRquest?.data?.booking.map((booking) => {
             return (
               <div
@@ -143,6 +143,10 @@ const BookingRequest = () => {
               </div>
             );
           })
+        ) : (
+          <div className="text-center font-semibold font-roboto ">
+            No Request Found
+          </div>
         )}
       </div>
     </div>

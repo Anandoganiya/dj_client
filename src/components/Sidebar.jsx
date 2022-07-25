@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import djMenuLink from "../content/djMenuLink";
 import { HiMenuAlt2 } from "react-icons/hi";
@@ -7,13 +7,7 @@ import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { useNavigate } from "react-router-dom";
 const Sidebar = ({ showMenu, setShowMenu }) => {
-  const selectedOption = localStorage.getItem("selectedOption") || 0;
-  const [isActive, setIsActive] = useState(Number(selectedOption));
   const navigate = useNavigate();
-  const selectedMenuItem = (menuId) => {
-    localStorage.setItem("selectedOption", menuId);
-    setIsActive(menuId);
-  };
 
   const logOut = () => {
     localStorage.clear();
@@ -53,15 +47,14 @@ const Sidebar = ({ showMenu, setShowMenu }) => {
       </div>
       {/* menu */}
       <div className="mt-[82px] relative h-[70%]">
-        {djMenuLink.map((link, index) => (
+        {djMenuLink.map((link) => (
           <div className="mb-[7px]" key={link.linkName}>
             <Link to={link.slug}>
               <div
-                onClick={() => selectedMenuItem(index)}
                 className={`flex items-center min-w-[218px] max-w-[max-content] h-[40px] pl-[1rem]  py-[10px] 
               hover:bg-blue-light rounded-r-3xl hover:shadow-menu_item-shadow
               transition-all delay-75 duration-75 ease-linear ${
-                isActive === index ? "bg-blue-light" : ""
+                link.slug === window.location.pathname ? "bg-blue-light" : ""
               }`}
               >
                 <img
@@ -81,11 +74,12 @@ const Sidebar = ({ showMenu, setShowMenu }) => {
           <div className="mb-[7px]">
             <Link to="/messages">
               <div
-                onClick={() => selectedMenuItem(5)}
                 className={`flex items-center min-w-[218px] max-w-[max-content] h-[40px] pl-[1rem]  py-[10px] 
                hover:bg-blue-light rounded-r-3xl hover:shadow-menu_item-shadow
                 transition-all delay-75 duration-75 ease-linear ${
-                  isActive === 5 ? "bg-blue-light" : ""
+                  "/messages" === window.location.pathname
+                    ? "bg-blue-light"
+                    : ""
                 }`}
               >
                 <img
@@ -100,7 +94,6 @@ const Sidebar = ({ showMenu, setShowMenu }) => {
             </Link>
           </div>
           <div className="mb-[7px]">
-            {/* <Link to="/"> */}
             <div
               onClick={() => logOut()}
               className="flex items-center min-w-[218px] max-w-[max-content] h-[40px] pl-[1rem]  py-[10px] 
@@ -115,7 +108,6 @@ const Sidebar = ({ showMenu, setShowMenu }) => {
                 Log Out
               </div>
             </div>
-            {/* </Link> */}
           </div>
         </div>
       </div>

@@ -1,11 +1,11 @@
 import axios from "axios";
-const USER_URL = "http://localhost:3005/api/user/get-user";
-const PROFIE_UPDATE_URL = "http://localhost:3005/api/user/update-profile";
-const PENDING_BOOKING_REQUEST_URL =
-  "http://localhost:3005/api/booking/pending-decline-booking";
-const ACCEPTED_BOOKING_REQUEST_URL =
-  "http://localhost:3005/api/booking/accept-booking";
-const CREATE_DJ_URL = "http://localhost:3005/api/djOfWeek/create-dj-of-week";
+import {
+  USER_URL,
+  PROFIE_UPDATE_URL,
+  PENDING_BOOKING_REQUEST_URL,
+  ACCEPTED_BOOKING_REQUEST_URL,
+  CREATE_DJ_URL,
+} from "../constant/constants";
 
 const getUser = async (currentUser) => {
   const response = await axios.get(USER_URL, {

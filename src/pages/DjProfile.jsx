@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { createDjWeek } from "../reducers/userSlice";
-const UserProfile = () => {
+const DjProfile = () => {
   // const [selectTag, setSelectTag] = useState([]);
   const { user } = useSelector((state) => state.auth);
   // const { currentUser } = useSelector((state) => state.currentUser);
@@ -174,4 +174,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default DjProfile;

@@ -23,9 +23,12 @@ export const getCurrentUser = createAsyncThunk(
 
 export const updateUserProfile = createAsyncThunk(
   "updateCurrentUser",
-  async (accessToken, thunkAPI) => {
+  async (userProfile, thunkAPI) => {
     try {
-      return await userServices.upateProfile(accessToken);
+      return await userServices.upateProfile(
+        userProfile.profile,
+        userProfile.accessToken
+      );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.error);
     }

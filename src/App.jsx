@@ -9,6 +9,7 @@ import {
   BookingRequest,
   Messages,
   ReviewsRatings,
+  Notification,
 } from "./pages";
 import { Layout } from "./components";
 import ProtectedRoutes from "./helper/ProtectedRoutes";
@@ -20,10 +21,11 @@ function App() {
           <Route element={<Layout />}>
             <Route index path="/" element={<Dashboard />}></Route>
             <Route path="/booking-request" element={<BookingRequest />}></Route>
+            <Route path="/Notification" element={<Notification />}></Route>
             <Route path="/user-profile" element={<UserProfile />}></Route>
             <Route path="/dj-week" element={<DjProfile />}></Route>
-            <Route path="/messages" element={<Messages />}></Route>
             <Route path="/reviews-ratings" element={<ReviewsRatings />}></Route>
+            <Route path="/messages" element={<Messages />}></Route>
           </Route>
         </Route>
 

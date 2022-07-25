@@ -1,9 +1,10 @@
 import axios from "axios";
-
-const REGISTER_URL = "http://localhost:3005/api/user/register-user";
-const PLUG_URL = "http://localhost:3005/api/user/set-user-plug";
-const PROFILE_URL = "http://localhost:3005/api/user/set-user-profile";
-const LOGIN_URL = "http://localhost:3005/api/user/login-user";
+import {
+  REGISTER_URL,
+  PLUG_URL,
+  LOGIN_URL,
+  PROFILE_URL,
+} from "../constant/constants";
 
 const register = async (userCredentials) => {
   const response = await axios.post(REGISTER_URL, userCredentials);

@@ -8,7 +8,7 @@ const UserProfile = () => {
   const { currentUser } = useSelector((state) => state.currentUser);
   const dispatch = useDispatch();
   const [djName, setDjName] = useState("");
-  const [djBio, setDjBio] = useState();
+  const [djBio, setDjBio] = useState("");
 
   useEffect(() => {
     dispatch(getCurrentUser(user));
@@ -16,11 +16,22 @@ const UserProfile = () => {
 
   const handleProfileForm = (e) => {
     e.preventDefault();
-    const profile = {
-      djName,
-      djBio,
-    };
+    let profile = {};
+    if (djName) {
+      profile["djName"] = djName;
+    }
+    if (djBio) {
+      profile["djBio"] = djBio;
+    }
+    if (!djName && !djBio) {
+      return;
+    }
+    // const profile = {
+    //   djName,
+    //   djBio,
+    // };
     dispatch(updateUserProfile({ profile, accessToken: user.data.token }));
+    dispatch(getCurrentUser(user));
   };
 
   // selecting the tags
@@ -32,29 +43,6 @@ const UserProfile = () => {
   };
 
   return (
-    // <div className=" grid grid-cols-desk max-2md:grid-cols-mobile w-full">
-    //   <Sidebar showMenu={showMenu} setShowMenu={setShowMenu} />
-
-    //   {/* home container */}
-    //   <main className="max-w-[150rem] ">
-    //     <div
-    //       className="mt-[2.313rem] mr-[2.313rem] flex justify-between items-center
-    //       max-2md:fixed w-full bg-white max-2md:m-0 p-1"
-    //     >
-    //       <div
-    //         onClick={() => setShowMenu(true)}
-    //         className={`ml-4 max-2md:visible invisible text-3xl cursor-pointer`}
-    //       >
-    //         <HiMenuAlt2 />
-    //       </div>
-    //       <div className="w-[3.5rem]">
-    //         <img
-    //           className="w-full  rounded-full"
-    //           src="./assets/profile/profile.png"
-    //           alt="profile"
-    //         />
-    //       </div>
-    //     </div>
     <div className="mx-[41px] max-sm:mx-4 max-2md:mt-[5rem] ">
       <h2 className="text-[30px] font-semibold font-inter uppercase mb-[33px]">
         PROFILE
@@ -328,12 +316,8 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
-        {/* </div>{" "}
-            close from top */}
       </div>
     </div>
-    //   </main>
-    // </div>
   );
 };
 
